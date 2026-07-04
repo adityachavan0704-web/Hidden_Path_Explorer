@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin - Manage Alerts - HiddenPath Explorer</title>
+
+  <!-- CSS Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="bg-[#F3F4F1] text-[#2C3E2C] font-sans">
+  <!-- Navigation -->
+  <nav class="bg-[#F3F4F1]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#4A644A]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-[#8DA38D] to-[#4A644A] rounded-lg flex items-center justify-center shadow-lg">
+            <i data-lucide="leaf" class="text-[#F3F4F1] w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-bold text-[#2C3E2C] font-serif tracking-wide">
+            HiddenPath Admin
+          </span>
+        </div>
+        <!-- Logout Button (added dynamically) -->
+      </div>
+    </div>
+
+    <!-- Admin Menu -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 bg-white/50 border-b border-[#4A644A]/10">
+      <div class="flex gap-4">
+        <a href="admin.html" class="px-4 py-2 rounded-lg font-semibold text-[#4A644A] hover:bg-[#E8F3E8] transition-colors">
+          <i data-lucide="bell" class="w-4 h-4 inline mr-2"></i> Alerts
+        </a>
+        <a href="admin-events.html" class="px-4 py-2 rounded-lg font-semibold text-[#4A644A] hover:bg-[#E8F3E8] transition-colors">
+          <i data-lucide="calendar" class="w-4 h-4 inline mr-2"></i> Events
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-[#2C3E2C] mb-2 font-serif">Manage Live Alerts</h1>
+      <p class="text-[#4A644A]/80">Add, edit, or delete alerts for the HiddenPath Explorer app.</p>
+    </div>
+
+    <!-- Add Alert Form -->
+    <div class="bg-white border border-[#4A644A]/20 p-6 rounded-2xl shadow-xl mb-8">
+      <h2 class="text-xl font-semibold text-[#2C3E2C] mb-4">Add New Alert</h2>
+      <form id="add-alert-form" class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-semibold text-[#4A644A] uppercase mb-1">Type</label>
+            <select id="alert-type" required
+              class="w-full bg-[#F3F4F1] border border-[#8DA38D]/30 rounded-lg py-3 px-4 text-[#2C3E2C] focus:outline-none focus:border-[#4A644A] transition-colors">
+              <option value="">Select Type</option>
+              <option value="weather">Weather</option>
+              <option value="safety">Safety</option>
+              <option value="event">Event</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-[#4A644A] uppercase mb-1">Severity</label>
+            <select id="alert-severity" required
+              class="w-full bg-[#F3F4F1] border border-[#8DA38D]/30 rounded-lg py-3 px-4 text-[#2C3E2C] focus:outline-none focus:border-[#4A644A] transition-colors">
+              <option value="">Select Severity</option>
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <div class="mt-4">
+          <label class="block text-sm font-semibold text-[#4A644A] uppercase mb-1">Location</label>
+          <input type="text" id="alert-location" required
+            class="w-full bg-[#F3F4F1] border border-[#8DA38D]/30 rounded-lg py-3 px-4 text-[#2C3E2C] focus:outline-none focus:border-[#4A644A] transition-colors"
+            placeholder="e.g. Imphal, Kaziranga, etc.">
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-[#4A644A] uppercase mb-1">Message</label>
+          <textarea id="alert-message" required rows="3"
+            class="w-full bg-[#F3F4F1] border border-[#8DA38D]/30 rounded-lg py-3 px-4 text-[#2C3E2C] focus:outline-none focus:border-[#4A644A] transition-colors"
+            placeholder="Enter alert message..."></textarea>
+        </div>
+        <button type="submit"
+          class="px-6 py-3 bg-[#4A644A] rounded-xl font-bold text-white hover:bg-[#2C3E2C] transition-colors shadow-lg shadow-[#4A644A]/20">
+          Add Alert
+        </button>
+      </form>
+    </div>
+
+    <!-- Alerts List -->
+    <div class="bg-white border border-[#4A644A]/20 p-6 rounded-2xl shadow-xl">
+      <h2 class="text-xl font-semibold text-[#2C3E2C] mb-4">Existing Alerts</h2>
+      <div id="alerts-list" class="space-y-4">
+        <!-- Alerts will be loaded here -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+    <p>© 2025 HiddenPath Explorer Admin Panel.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script type="module" src="admin.js"></script>
+</body>
+
+</html>

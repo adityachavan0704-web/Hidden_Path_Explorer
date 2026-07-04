@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home - HiddenPath Explorer</title>
+
+  <!-- CSS Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-stone-50 text-stone-800 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-[#F3F4F1]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#4A644A]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-[#8DA38D] to-[#4A644A] rounded-lg flex items-center justify-center shadow-lg">
+            <i data-lucide="leaf" class="text-[#F3F4F1] w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-bold text-[#2C3E2C] font-serif tracking-wide">
+            HiddenPath
+          </span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="home.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-[#4A644A] text-[#F3F4F1] shadow-md">
+              <i data-lucide="compass" class="w-4 h-4"></i> Home
+            </a>
+            <a href="map.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:text-[#2C3E2C] hover:bg-[#E8F3E8]">
+              <i data-lucide="map" class="w-4 h-4"></i> Explore Map
+            </a>
+            <a href="places.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:text-[#2C3E2C] hover:bg-[#E8F3E8]">
+              <i data-lucide="map-pin" class="w-4 h-4"></i> Places
+            </a>
+            <a href="events.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:text-[#2C3E2C] hover:bg-[#E8F3E8]">
+              <i data-lucide="calendar" class="w-4 h-4"></i> Events
+            </a>
+            <a href="alerts.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:text-[#2C3E2C] hover:bg-[#E8F3E8]">
+              <i data-lucide="bell" class="w-4 h-4"></i> Alerts
+            </a>
+            <a href="about.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:text-[#2C3E2C] hover:bg-[#E8F3E8]">
+              <i data-lucide="info" class="w-4 h-4"></i> About
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="-mr-2 flex md:hidden">
+          <button id="mobile-menu-btn"
+            class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#F3F4F1] border-b border-[#4A644A]/20">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="home.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium bg-[#4A644A] text-[#F3F4F1]">
+          <i data-lucide="compass" class="w-5 h-5"></i> Home
+        </a>
+        <a href="map.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="map" class="w-5 h-5"></i> Explore Map
+        </a>
+        <a href="places.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="map-pin" class="w-5 h-5"></i> Places
+        </a>
+        <a href="events.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="calendar" class="w-5 h-5"></i> Events
+        </a>
+        <a href="alerts.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="bell" class="w-5 h-5"></i> Alerts
+        </a>
+        <a href="about.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="info" class="w-5 h-5"></i> About
+        </a>
+      </div>
+    </div>
+  </nav>
+
+
+  <main class="space-y-20 pb-20 fade-in bg-stone-50">
+    <div class="relative overflow-hidden bg-emerald-50/50 min-h-[500px] flex items-center justify-center">
+      <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-60">
+        <div
+          class="absolute -top-24 -left-24 w-96 h-96 bg-emerald-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob">
+        </div>
+        <div
+          class="absolute top-0 -right-4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000">
+        </div>
+        <div
+          class="absolute -bottom-8 left-20 w-96 h-96 bg-lime-100 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000">
+        </div>
+      </div>
+      <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div
+          class="inline-block mb-4 px-4 py-1 rounded-full bg-white border border-emerald-200 text-emerald-600 text-sm font-medium shadow-sm">
+          Discover the Undiscovered Northeast
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold text-stone-800 mb-6 tracking-tight leading-tight">
+          Find Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Hidden
+            Path</span>
+        </h1>
+        <p class="text-lg md:text-xl text-stone-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          Real-time maps, crowd insights, and curated local experiences for the explorer in you.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="map.html"
+            class="px-8 py-4 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold hover:from-emerald-500 hover:to-teal-500 transition-all shadow-lg shadow-emerald-200 flex items-center justify-center gap-2">
+            Start Exploring <i data-lucide="map" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Hidden Gems -->
+        <a href="places.html"
+          class="block bg-white border border-stone-200 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all group">
+          <div
+            class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="compass" class="text-emerald-600 w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-stone-800 mb-2">Hidden Gems</h3>
+          <p class="text-stone-500 leading-relaxed">Discover secret waterfalls, root bridges, and caves known only to
+            locals.</p>
+        </a>
+        <!-- Live Alerts -->
+        <a href="alerts.html"
+          class="block bg-white border border-stone-200 p-6 rounded-2xl shadow-sm hover:shadow-md hover:border-emerald-200 transition-all group">
+          <div
+            class="w-12 h-12 rounded-xl bg-red-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <i data-lucide="bell" class="text-red-500 w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-stone-800 mb-2">Live Alerts</h3>
+          <p class="text-stone-500 leading-relaxed">Stay safe with real-time updates on weather, road conditions, and
+            events.</p>
+        </a>
+      </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold text-stone-800">Trending This Week</h2>
+        <a href="places.html" class="text-emerald-600 hover:text-emerald-500 flex items-center gap-1 font-medium">
+          View All <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Destinations will be loaded dynamically or hardcoded -->
+
+        <!-- CARD 1: Double Decker Root Bridge -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://www.indiantempletour.com/wp-content/uploads/2023/04/Double-Decker-Living-Root-Bridge-Tour.jpg"
+              alt="Double Decker Root Bridge"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-1" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-emerald-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Hidden Gem
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-1"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-1" class="hidden image-upload" accept="image/*" data-target="img-1">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Double Decker Root Bridge</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Meghalaya
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                Low Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Ziro Valley -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://s3.india.com/wp-content/uploads/2025/01/Explore-Ziro_-The-Perfect-Budget-Destination-For-Nature-Lovers-And-Adventurers.jpg"
+              alt="Ziro Valley"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-2" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-2"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-2" class="hidden image-upload" accept="image/*" data-target="img-2">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Ziro Valley</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Arunachal Pradesh
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">
+                Moderate Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Loktak Lake -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://c.ndtvimg.com/gws/ms/manipurs-loktak-worlds-only-floating-lake/assets/5.jpeg?1737972982"
+              alt="Loktak Lake"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-3" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-emerald-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Hidden Gem
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-3"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-3" class="hidden image-upload" accept="image/*" data-target="img-3">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Loktak Lake</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Manipur
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                Low Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Majuli Island -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://static.toiimg.com/thumb/64012913/Majulithe-worlds-largest-river-island-might-just-disappear-in-the-future.jpg?width=1200&height=900"
+              alt="Majuli Island"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-4" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-4"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-4" class="hidden image-upload" accept="image/*" data-target="img-4">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Majuli Island</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Assam
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-red-100 text-red-700">
+                High Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Shillong -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://www.esikkimtourism.in/wp-content/uploads/2018/07/Tura-Meghalaya.jpg" alt="Shillong"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-5" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.7
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Popular
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-5"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-5" class="hidden image-upload" accept="image/*" data-target="img-5">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Shillong</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Meghalaya
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-red-100 text-red-700">
+                High Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 6: Imphal -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://i.ytimg.com/vi/aTnTUK0PeEM/sddefault.jpg" alt="Imphal"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-6" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.6
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-6"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-6" class="hidden image-upload" accept="image/*" data-target="img-6">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Imphal</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Manipur
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">
+                Moderate Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 7: Tawang Monastery -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://s7ap1.scene7.com/is/image/incredibleindia/tawang-monastery-tawang-arunachal-pradesh-1-attr-hero?qlt=82&ts=1742169936069"
+              alt="Tawang Monastery"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-7" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.9
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-purple-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Cultural Hub
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-7"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-7" class="hidden image-upload" accept="image/*" data-target="img-7">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Tawang Monastery</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Arunachal Pradesh
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-amber-100 text-amber-700">
+                Moderate Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 8: Kaziranga National Park -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Kaziranga National Park"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-8" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Popular
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-8"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-8" class="hidden image-upload" accept="image/*" data-target="img-8">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Kaziranga National Park</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Assam
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-red-100 text-red-700">
+                High Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 9: Kohima -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://www.indianholiday.com/wordpress/wp-content/uploads/2024/07/dest_head_img-1141.png"
+              alt="Kohima"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-9" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.7
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-9"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-9" class="hidden image-upload" accept="image/*" data-target="img-9">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Kohima</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Nagaland
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                Low Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 10: Gangtok -->
+        <div
+          class="bg-white rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all group cursor-pointer relative destination-card">
+          <div class="relative h-48 overflow-hidden">
+            <img
+              src="https://s7ap1.scene7.com/is/image/incredibleindia/tsomgo-lake-gangtok-sikkim-3-attr-hero?qlt=82&ts=1742159961340"
+              alt="Gangtok"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 destination-img"
+              id="img-10" />
+            <div
+              class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-stone-700 flex items-center gap-1 shadow-sm">
+              <i data-lucide="star" class="w-3 h-3 text-amber-400 fill-amber-400"></i> 4.8
+            </div>
+            <div
+              class="absolute top-3 left-3 bg-blue-600/90 backdrop-blur-md px-2 py-1 rounded-md text-xs font-bold text-white shadow-sm">
+              Popular
+            </div>
+            <!-- Upload Button -->
+            <label for="upload-10"
+              class="absolute bottom-3 right-3 bg-white/90 p-2 rounded-full cursor-pointer hover:bg-white transition-colors shadow-sm"
+              title="Change Image">
+              <i data-lucide="camera" class="w-4 h-4 text-stone-600"></i>
+              <input type="file" id="upload-10" class="hidden image-upload" accept="image/*" data-target="img-10">
+            </label>
+          </div>
+          <div class="p-5">
+            <h3 class="text-lg font-bold text-stone-800 mb-1">Gangtok</h3>
+            <p class="text-stone-500 text-sm mb-3 flex items-center gap-1">
+              <i data-lucide="map-pin" class="w-3 h-3"></i> Sikkim
+            </p>
+            <div class="flex items-center justify-between mt-4">
+              <span class="text-xs font-medium px-2 py-1 rounded-full bg-red-100 text-red-700">
+                High Crowd
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+    <p>© 2025 HiddenPath Explorer. Bringing Northeast India closer to you.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script type="module" src="script.js"></script>
+
+  <script>
+    // Simple script to handle image uploads/previews
+    document.addEventListener('DOMContentLoaded', () => {
+      const uploadInputs = document.querySelectorAll('.image-upload');
+
+      uploadInputs.forEach(input => {
+        input.addEventListener('change', function (e) {
+          if (this.files && this.files[0]) {
+            const targetId = this.getAttribute('data-target');
+            const targetImg = document.getElementById(targetId);
+
+            if (targetImg) {
+              const reader = new FileReader();
+
+              reader.onload = function (e) {
+                targetImg.src = e.target.result;
+              }
+
+              reader.readAsDataURL(this.files[0]);
+            }
+          }
+        });
+      });
+
+      // Initialize Lucide icons for the new elements
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+  </script>
+
+</body>
+
+</html>

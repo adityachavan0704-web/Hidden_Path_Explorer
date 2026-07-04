@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events Management - HiddenPath Admin</title>
+
+  <!-- CSS Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-slate-900 text-slate-100 font-sans">
+  <!-- Navigation -->
+  <nav class="bg-slate-800 border-b border-slate-700 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
+            <i data-lucide="settings" class="text-white w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-bold text-white">HiddenPath Admin</span>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <span class="text-slate-400" id="admin-email">Admin</span>
+          <button id="logout-btn"
+            class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2">
+            <i data-lucide="log-out" class="w-4 h-4"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 py-12">
+    <!-- Statistics -->
+    <div class="grid md:grid-cols-4 gap-6 mb-12">
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm mb-2">Total Events</p>
+            <p class="text-4xl font-bold text-white" id="stat-total-events">0</p>
+          </div>
+          <i data-lucide="calendar" class="w-12 h-12 text-blue-500 opacity-20"></i>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm mb-2">Total Bookings</p>
+            <p class="text-4xl font-bold text-white" id="stat-total-bookings">0</p>
+          </div>
+          <i data-lucide="ticket" class="w-12 h-12 text-emerald-500 opacity-20"></i>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm mb-2">Confirmed Bookings</p>
+            <p class="text-4xl font-bold text-white" id="stat-confirmed">0</p>
+          </div>
+          <i data-lucide="check-circle" class="w-12 h-12 text-cyan-500 opacity-20"></i>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-slate-400 text-sm mb-2">Total Revenue</p>
+            <p class="text-2xl font-bold text-white" id="stat-revenue">₹0</p>
+          </div>
+          <i data-lucide="coins" class="w-12 h-12 text-yellow-500 opacity-20"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="flex gap-4 mb-8 border-b border-slate-700">
+      <button class="tab-btn px-4 py-3 font-semibold text-slate-300 border-b-2 border-transparent hover:text-white transition-colors"
+        data-tab="events">
+        <i data-lucide="calendar" class="w-4 h-4 inline mr-2"></i> Manage Events
+      </button>
+      <button class="tab-btn px-4 py-3 font-semibold text-slate-300 border-b-2 border-transparent hover:text-white transition-colors"
+        data-tab="bookings">
+        <i data-lucide="ticket" class="w-4 h-4 inline mr-2"></i> View Bookings
+      </button>
+    </div>
+
+    <!-- Events Tab -->
+    <div id="tab-events" class="tab-content">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-white">Events Management</h2>
+        <button id="add-event-btn"
+          class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+          <i data-lucide="plus" class="w-5 h-5"></i> Add New Event
+        </button>
+      </div>
+
+      <div id="events-list" class="grid gap-6"></div>
+    </div>
+
+    <!-- Bookings Tab -->
+    <div id="tab-bookings" class="tab-content hidden">
+      <h2 class="text-3xl font-bold text-white mb-8">All Bookings</h2>
+      <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="w-full">
+            <thead class="bg-slate-700">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Booking ID</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">User Email</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Event</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Tickets</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Price</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Status</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-slate-200">Date</th>
+              </tr>
+            </thead>
+            <tbody id="bookings-table-body" class="divide-y divide-slate-700">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- JavaScript -->
+  <script type="module" src="admin-events.js"></script>
+</body>
+
+</html>

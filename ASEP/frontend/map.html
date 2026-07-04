@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Map - HiddenPath Explorer</title>
+
+  <!-- CSS Libraries -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Leaflet CSS and JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="bg-[#F3F4F1] text-[#2C3E2C] font-sans">
+  <!-- Navigation -->
+  <nav class="bg-[#F3F4F1]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#4A644A]/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <div class="flex items-center gap-2">
+          <div
+            class="w-8 h-8 bg-gradient-to-br from-[#8DA38D] to-[#4A644A] rounded-lg flex items-center justify-center shadow-lg">
+            <i data-lucide="leaf" class="text-[#F3F4F1] w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-bold text-[#2C3E2C] font-serif tracking-wide">
+            HiddenPath
+          </span>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="home.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:bg-[#E8F3E8]">
+              <i data-lucide="compass" class="w-4 h-4"></i> Home
+            </a>
+            <a href="map.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 bg-[#4A644A] text-[#F3F4F1] shadow-md">
+              <i data-lucide="map" class="w-4 h-4"></i> Explore Map
+            </a>
+            <a href="places.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:bg-[#E8F3E8]">
+              <i data-lucide="map-pin" class="w-4 h-4"></i> Places
+            </a>
+            <a href="events.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:bg-[#E8F3E8]">
+              <i data-lucide="calendar" class="w-4 h-4"></i> Events
+            </a>
+            <a href="alerts.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:bg-[#E8F3E8]">
+              <i data-lucide="bell" class="w-4 h-4"></i> Alerts
+            </a>
+            <a href="about.html"
+              class="flex items-center gap-2 px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 text-[#4A644A] hover:bg-[#E8F3E8]">
+              <i data-lucide="info" class="w-4 h-4"></i> About
+            </a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="-mr-2 flex md:hidden">
+          <button id="mobile-menu-btn"
+            class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800 focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#F3F4F1] border-b border-[#4A644A]/20">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="home.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="compass" class="w-5 h-5"></i> Home
+        </a>
+        <a href="map.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium bg-[#4A644A] text-[#F3F4F1]">
+          <i data-lucide="map" class="w-5 h-5"></i> Explore Map
+        </a>
+        <a href="places.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="map-pin" class="w-5 h-5"></i> Places
+        </a>
+        <a href="events.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="calendar" class="w-5 h-5"></i> Events
+        </a>
+        <a href="alerts.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="bell" class="w-5 h-5"></i> Alerts
+        </a>
+        <a href="about.html"
+          class="flex items-center gap-3 w-full text-left px-3 py-2 rounded-md text-base font-medium text-[#4A644A] hover:bg-[#E8F3E8]">
+          <i data-lucide="info" class="w-5 h-5"></i> About
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <!-- Main Content -->
+  <main class="h-[calc(100vh-64px)] flex flex-col md:flex-row fade-in bg-[#E8F3E8]/30">
+    <div class="w-full md:w-96 bg-white border-r border-stone-200 flex flex-col overflow-hidden">
+      <div class="p-6 border-b border-stone-200">
+        <h2 class="text-2xl font-bold text-stone-800 mb-4">Explore Northeast</h2>
+        <div class="relative mb-4">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 w-5 h-5"></i>
+          <input type="text" id="map-search-input" placeholder="Search places..."
+            class="w-full bg-stone-100 border border-stone-200 rounded-lg py-3 pl-10 pr-4 text-stone-800 focus:outline-none focus:border-emerald-500 transition-colors" />
+        </div>
+        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+          <button id="btn-map-all"
+            class="bg-emerald-600 text-white px-4 py-1.5 rounded-full text-sm font-medium transition-colors">All</button>
+          <button id="btn-map-hidden"
+            class="bg-white border border-stone-200 text-stone-500 px-4 py-1.5 rounded-full text-sm font-medium hover:bg-stone-50 transition-colors">Hidden
+            Gems</button>
+        </div>
+      </div>
+      <div class="flex-1 overflow-y-auto p-4 space-y-4" id="destinations-sidebar">
+        <!-- Destinations loaded here dynamically -->
+      </div>
+    </div>
+
+    <div class="flex-1 bg-emerald-50/30 relative overflow-hidden flex items-center justify-center group">
+      <div class="absolute inset-0 opacity-40 pointer-events-none">
+        <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M0,50 Q25,25 50,50 T100,50" stroke="#10b981" strokeWidth="0.5" fill="none" />
+          <path d="M0,30 Q40,60 80,30 T100,80" stroke="#059669" strokeWidth="0.5" fill="none" />
+          <circle cx="30" cy="40" r="20" fill="#d1fae5" opacity="0.5" />
+        </svg>
+        <div class="absolute inset-0"
+          style="background-image: radial-gradient(#a7f3d0 1px, transparent 1px); background-size: 20px 20px;"></div>
+      </div>
+
+      <!-- Placeholder for map -->
+      <div id="map" class="w-full h-full"></div>
+
+      <div class="absolute bottom-8 right-8 bg-white/90 backdrop-blur p-4 rounded-xl border border-stone-200 shadow-lg">
+        <h4 class="text-stone-800 font-bold text-sm mb-2">Crowd Density</h4>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-xs text-stone-600">
+            <div class="w-3 h-3 rounded-full bg-emerald-500"></div> Low (&lt; 50)
+          </div>
+          <div class="flex items-center gap-2 text-xs text-stone-600">
+            <div class="w-3 h-3 rounded-full bg-amber-500"></div> Moderate
+          </div>
+          <div class="flex items-center gap-2 text-xs text-stone-600">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div> High (&gt; 500)
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (hidden on map page) -->
+  <footer id="main-footer"
+    class="hidden bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+    <p>© 2025 HiddenPath Explorer. Bringing Northeast India closer to you.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script type="module" src="script.js"></script>
+  <script type="module" src="map.js"></script>
+</body>
+
+</html>
